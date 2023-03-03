@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Auth from "../Auth/Auth";
 import Home from "../Home/Home";
 
-const Routings = () => {
+const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -12,4 +12,4 @@ const Routings = () => {
   );
 };
 
-export default Routings;
+export default Router;

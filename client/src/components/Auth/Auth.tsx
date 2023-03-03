@@ -1,5 +1,3 @@
-import { useGoogleLogin } from '@react-oauth/google';
-import { default as jwt_code, default as jwt_decode } from 'jwt-decode';
 import React, { useState } from "react";
 import { Button } from "react-daisyui";
 import { Link } from "react-router-dom";
@@ -49,22 +47,6 @@ const Auth: React.FC = () => {
     setIsSignUp(prevState => !prevState)
   }
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: async tokenResponse => {
-      try{
-        const {data} = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo',{
-        headers: {
-          "Authorization" : `Bearer ${tokenResponse.access_token}`,
-        },
-      });
-      console.log("data",tokenResponse.access_token, ' ', data)
-      }
-      catch(err){
-        console.log(err)
-      }
-    }
-  });
-
   const handleChange = ({target: {name,value},}:React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => {
       (prev as any)[name] = value;
@@ -104,7 +86,7 @@ const Auth: React.FC = () => {
                 <FormInput name="confirmPassword" type="password" handleChange={handleChange} label="Confirm Password" placeholder="Confirm password" required={true} />   
               </>)}
                 <Button type="submit"  color="primary" className="w-full my-2">{isSignUp ? 'Register' : 'Sign In'}</Button>
-                <Button type="submit" color="success" onClick={()=> googleLogin()} className="w-full my-2 hover:bg-emerald-500">{isSignUp ? 'Register with Google' : 'Sign In with Google'}<img src={GoogleLogo}/></Button>
+                <Button type="submit" color="success"  className="w-full my-2 hover:bg-emerald-500">{isSignUp ? 'Register with Google' : 'Sign In with Google'}<img src={GoogleLogo}/></Button>
                 <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                 <div className="flex ">
                 {isSignUp ? <p className="mr-2">Already have an account? </p> : <p>Don't have an account?</p>}
