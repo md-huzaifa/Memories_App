@@ -1,6 +1,6 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NabBar";
-import Routings from "./components/router/Router";
+import Routings from "./router/Router";
 function App() {
   return (
     <>
