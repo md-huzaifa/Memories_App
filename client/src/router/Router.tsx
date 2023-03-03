@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Auth from "../Auth/Auth";
-import Home from "../Home/Home";
+import Auth from "../components/Auth/Auth";
+import Home from "../components/Home/Home";
 
 const Router = () => {
   return (
