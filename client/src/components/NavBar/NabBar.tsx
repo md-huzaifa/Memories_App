@@ -35,7 +35,7 @@ const NabBar: React.FC = () => {
                 </div>
               </Button>
               <Dropdown.Menu className="w-52 menu-compact">
-                <Dropdown.Item>{user?.name}</Dropdown.Item>
+                <Dropdown.Item>{user}</Dropdown.Item>
                 <Dropdown.Item>Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
