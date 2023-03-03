@@ -1,21 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-// import {
-//   applyMiddleware,
-//   compose,
-//   legacy_createStore as createStore
-// } from "redux";
-// import thunk from "redux-thunk";
+import { BrowserRouter as Router } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
 import "./index.css";
-// import reducers from "./reducers";
-import { store } from './store/store';
+import { persistor, store } from "./store/store";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>
+  <React.StrictMode>
+    <Router>
+      <Provider store={store}>
+        <PersistGate loading={<div><p>Spinner</p></div>} persistor={persistor}>
+          <App />
+        </PersistGate>
+      </Provider>
+    </Router>
+  </React.StrictMode>
 );
